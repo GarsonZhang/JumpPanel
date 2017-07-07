@@ -83,6 +83,7 @@
             this.panPage7.Name = "panPage7";
             this.panPage7.Size = new System.Drawing.Size(319, 100);
             this.panPage7.TabIndex = 6;
+            this.panPage7.Tag = "内容7";
             // 
             // label8
             // 
@@ -101,6 +102,7 @@
             this.panPage6.Name = "panPage6";
             this.panPage6.Size = new System.Drawing.Size(319, 100);
             this.panPage6.TabIndex = 5;
+            this.panPage6.Tag = "内容六";
             // 
             // label7
             // 
@@ -120,6 +122,7 @@
             this.panPage5.Name = "panPage5";
             this.panPage5.Size = new System.Drawing.Size(319, 241);
             this.panPage5.TabIndex = 4;
+            this.panPage5.Tag = "内容五";
             // 
             // label6
             // 
@@ -139,6 +142,7 @@
             this.panPage4.Name = "panPage4";
             this.panPage4.Size = new System.Drawing.Size(319, 276);
             this.panPage4.TabIndex = 3;
+            this.panPage4.Tag = "内容四";
             // 
             // label5
             // 
@@ -158,6 +162,7 @@
             this.panPage3.Name = "panPage3";
             this.panPage3.Size = new System.Drawing.Size(319, 141);
             this.panPage3.TabIndex = 2;
+            this.panPage3.Tag = "内容三";
             // 
             // label4
             // 
@@ -177,6 +182,7 @@
             this.panPage2.Name = "panPage2";
             this.panPage2.Size = new System.Drawing.Size(319, 339);
             this.panPage2.TabIndex = 1;
+            this.panPage2.Tag = "内容二";
             // 
             // label3
             // 
@@ -196,6 +202,7 @@
             this.panPage1.Name = "panPage1";
             this.panPage1.Size = new System.Drawing.Size(319, 100);
             this.panPage1.TabIndex = 0;
+            this.panPage1.Tag = "内容一";
             // 
             // label2
             // 

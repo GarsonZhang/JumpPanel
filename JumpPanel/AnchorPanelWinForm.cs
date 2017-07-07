@@ -17,9 +17,14 @@ namespace JumpPanel
 
         ScrollableControl XSControl;
 
+        /// <summary>
+        /// 构造函数,别忘了调用LoadContent
+        /// </summary>
+        /// <param name="PanMenu">导航容器</param>
+        /// <param name="xtraScrollableControl">面板容器，子面板必须也是容器，并且Dock为TOP</param>
         public AnchorPanel(Panel PanMenu, ScrollableControl xtraScrollableControl)
         {
-            
+
             MenuPan = PanMenu;
             XSControl = xtraScrollableControl;
             XSControl.Scroll += XSControl_Scroll;
@@ -56,24 +61,23 @@ namespace JumpPanel
         PanelMenu LastAnchor;
         int LastAnchorIniHeight;
 
+
         /// <summary>
-        /// 添加锚点
-        /// </summary>
-        /// <param name="col">默认为控件的Top，Height,Text属性</param>
-        /// <param name="LastControl">是否是最后一一个锚点，为了保证最后一个锚点定位在顶部，需要动态设置最后一个锚点的高度，如果最后一个锚点区域高度小于容器高度，则设置其高度为容器高度</param>
-        public void AddAnchor(Control col, bool LastControl)
-        {
-            AddAnchor(col, col.Text, LastControl);
-        }
-        /// <summary>
-        /// 添加锚点
+        /// 添加锚点,追加再顶部
         /// </summary>
         /// <param name="col">默认为控件的Top，Height属性</param>
         /// <param name="Caption">如果Caption为空则取Col的Text属性</param>
         /// <param name="LastControl">是否是最后一一个锚点，为了保证最后一个锚点定位在顶部，需要动态设置最后一个锚点的高度，如果最后一个锚点区域高度小于容器高度，则设置其高度为容器高度</param>
-        public void AddAnchor(Control col, string Caption, bool LastControl)
+        private void AddAnchorTop(Control col, string Caption, bool LastControl)
         {
+            Control lbl = generateNav(col, Caption, LastControl);
 
+            MenuPan.Controls.Add(lbl);
+
+        }
+
+        private Control generateNav(Control col, string Caption, bool LastControl)
+        {
             Label lbl = new Label()
             {
                 AutoSize = false,
@@ -96,12 +100,43 @@ namespace JumpPanel
             }
             else
                 lst.Add(new PanelMenu(lbl, col));
+            return lbl;
+        }
+
+        /// <summary>
+        /// 添加锚点,追加再顶部
+        /// </summary>
+        /// <param name="col">默认为控件的Top，Height属性</param>
+        /// <param name="Caption">如果Caption为空则取Col的Text属性</param>
+        /// <param name="LastControl">是否是最后一一个锚点，为了保证最后一个锚点定位在顶部，需要动态设置最后一个锚点的高度，如果最后一个锚点区域高度小于容器高度，则设置其高度为容器高度</param>
+        private void AddAnchorButtom(Control col, string Caption, bool LastControl)
+        {
+
+            Control lbl = generateNav(col, Caption, LastControl);
 
             MenuPan.Controls.Add(lbl);
             MenuPan.Controls.SetChildIndex(lbl, 0);
-
         }
 
+
+        /// <summary>
+        /// 初始化夹在容器数据
+        /// </summary>
+        public void LoadContent()
+        {
+            if (XSControl.Controls[0].Height < XSControl.Height)
+            {
+                XSControl.Controls[0].Height = XSControl.Height;
+            }
+            //Dock==Top  index是倒序    
+            foreach (Control col in XSControl.Controls)
+            {
+                if (XSControl.Controls.IndexOf(col) == 0)
+                    this.AddAnchorTop(col, col.Tag + "", true);
+                else
+                    this.AddAnchorTop(col, col.Tag + "", false);
+            }
+        }
 
         #endregion
 

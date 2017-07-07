@@ -19,12 +19,11 @@ namespace JumpPanel
         private void simpleButton1_Click(object sender, EventArgs e)
         {
         }
-        //AnchorPanelDex APanel;
+        
         AnchorPanel APanelwinform;
 
         private void Form3_Load(object sender, EventArgs e)
         {
-           // APanel = new AnchorPanelDex(panel1, xtraScrollableControl1);
             APanelwinform = new AnchorPanel(panel10, panel2);
 
             if (panel9.Height < panel2.Height) panel9.Height = panel2.Height;
